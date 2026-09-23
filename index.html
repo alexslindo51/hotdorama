@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HotDorama | Seu Portal de Doramas</title>
+    <title>HotDorama | Acesso VIP aos melhores Doramas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -16,140 +19,372 @@
                             100: '#fee2e2',
                             500: '#ef4444',
                             600: '#dc2626',
+                            700: '#b91c1c',
                             900: '#7f1d1d',
+                            950: '#0d0103', // Fundo bem escuro inspirado na referência
+                        },
+                        dark: {
+                            800: '#1a1a1a',
+                            900: '#111111'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        .hero-pattern {
-            background-color: #fef2f2;
-            background-image: radial-gradient(#fee2e2 2px, transparent 2px);
-            background-size: 30px 30px;
+        body {
+            background-color: #0d0103;
+            color: #ffffff;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-brand-50 min-h-screen flex flex-col">
+<body class="font-sans antialiased overflow-x-hidden">
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-brand-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-heart text-brand-500 text-2xl"></i>
-                    <span class="font-bold text-2xl tracking-tight text-brand-900">HotDorama</span>
-                </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-brand-600 transition-colors font-medium">Início</a>
-                    <a href="#em-alta" class="text-gray-600 hover:text-brand-600 transition-colors font-medium">Em Alta</a>
-                    <a href="#comunidade" class="text-gray-600 hover:text-brand-600 transition-colors font-medium">Comunidade</a>
-                </nav>
-                <div class="flex items-center space-x-4">
-                    <button class="text-brand-600 font-medium hover:text-brand-900 transition-colors hidden sm:block">Entrar</button>
-                    <button class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 rounded-full font-medium shadow-md transition-all transform hover:scale-105">
-                        Criar Conta
-                    </button>
-                </div>
+    <!-- Topbar -->
+    <div class="bg-brand-600 text-white text-center py-2 text-sm font-semibold tracking-wide">
+        🔥 Oferta de lançamento por tempo limitado! Aproveite
+    </div>
+
+    <!-- Hero Section -->
+    <header class="pt-12 pb-16 px-4 max-w-4xl mx-auto flex flex-col items-center text-center">
+        
+        <!-- Badge -->
+        <div class="border border-brand-500/30 bg-brand-500/10 text-brand-500 rounded-full px-4 py-1.5 text-sm font-bold mb-8 uppercase tracking-widest flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+            Acesso VIP liberado
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+            Mais de <span class="text-brand-500 text-glow">5.000 doramas incríveis</span> e totalmente <span class="text-brand-500 text-glow">sem limites</span> no seu celular!
+        </h1>
+
+        <!-- VSL / Vídeo Placeholder -->
+        <div class="w-full max-w-3xl aspect-video bg-dark-800 rounded-2xl border border-gray-800 shadow-2xl overflow-hidden relative mt-4 mb-8 flex items-center justify-center group cursor-pointer">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <img src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?auto=format&fit=crop&q=80&w=1000" alt="Video Placeholder" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+            
+            <button class="relative z-10 w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center transition-transform transform group-hover:scale-110 btn-glow">
+                <i class="fa-solid fa-play text-white text-2xl ml-1"></i>
+            </button>
+            <div class="absolute bottom-4 text-center w-full z-10">
+                <p class="font-bold text-lg">Toque para ativar o som</p>
             </div>
+        </div>
+
+        <!-- Lead text -->
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-medium">
+            Tenha acesso ilimitado a todos os episódios dos melhores aplicativos 
+            <strong class="text-white">a partir de apenas R$ 10,00</strong>.
+        </p>
+
+        <!-- Social Proof -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 mt-8 mb-8">
+            <div class="flex -space-x-3">
+                <img class="w-10 h-10 rounded-full border-2 border-brand-950" src="https://i.pravatar.cc/100?img=1" alt="User">
+                <img class="w-10 h-10 rounded-full border-2 border-brand-950" src="https://i.pravatar.cc/100?img=2" alt="User">
+                <img class="w-10 h-10 rounded-full border-2 border-brand-950" src="https://i.pravatar.cc/100?img=3" alt="User">
+                <img class="w-10 h-10 rounded-full border-2 border-brand-950" src="https://i.pravatar.cc/100?img=4" alt="User">
+            </div>
+            <div class="text-left flex flex-col justify-center">
+                <div class="flex text-yellow-400 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm font-medium"><strong class="text-white">8.417 pessoas</strong> já entraram</p>
+            </div>
+        </div>
+
+        <!-- CTA Principal -->
+        <button class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-5 px-10 rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+            Liberar meu acesso agora <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- Security Icons -->
+        <div class="flex flex-wrap justify-center gap-4 mt-6 text-xs text-gray-400 font-semibold uppercase">
+            <span class="flex items-center gap-1"><i class="fa-solid fa-lock text-brand-500"></i> Compra segura</span>
+            <span class="flex items-center gap-1"><i class="fa-solid fa-bolt text-brand-500"></i> Acesso imediato</span>
+            <span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-brand-500"></i> Garantia 30 dias</span>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-pattern flex-grow flex items-center pt-20 pb-24 border-b border-brand-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-                Seu novo vício em <span class="text-brand-500">Doramas</span> começa aqui.
-            </h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Assista, comente e viva intensamente as emoções dos melhores dramas asiáticos. Tudo legendado, em HD e com uma comunidade apaixonada como você.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-1">
-                    Começar a Assistir Agora
-                </button>
-                <button class="bg-white border-2 border-brand-200 text-brand-900 hover:border-brand-500 hover:bg-brand-50 px-8 py-4 rounded-full text-lg font-semibold shadow-sm transition-all">
-                    Ver Catálogo
-                </button>
+    <!-- Stats Bar -->
+    <div class="border-y border-gray-800 bg-dark-900 py-6">
+        <div class="max-w-4xl mx-auto px-4 flex justify-around text-center">
+            <div>
+                <strong class="block font-heading text-3xl text-white">5.000+</strong>
+                <span class="text-sm text-gray-400 font-medium uppercase">Títulos</span>
+            </div>
+            <div>
+                <strong class="block font-heading text-3xl text-white">HD/4K</strong>
+                <span class="text-sm text-gray-400 font-medium uppercase">Qualidade</span>
+            </div>
+            <div>
+                <strong class="block font-heading text-3xl text-white">24/7</strong>
+                <span class="text-sm text-gray-400 font-medium uppercase">Sem limite</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marquee Genres -->
+    <div class="overflow-hidden bg-brand-600 text-white py-3 border-y border-brand-700 relative flex whitespace-nowrap">
+        <ul class="flex animate-marquee min-w-full justify-around items-center gap-10 font-bold uppercase tracking-wider text-sm">
+            <li>Romance</li><li>Suspense</li><li>Drama</li><li>Thriller</li><li>Comédia Romântica</li><li>Histórico</li><li>Mistério</li>
+            <!-- Duplicado para fluidez -->
+            <li>Romance</li><li>Suspense</li><li>Drama</li><li>Thriller</li><li>Comédia Romântica</li><li>Histórico</li><li>Mistério</li>
+            <li>Romance</li><li>Suspense</li><li>Drama</li><li>Thriller</li><li>Comédia Romântica</li><li>Histórico</li><li>Mistério</li>
+        </ul>
+    </div>
+
+    <!-- O que você recebe -->
+    <section class="py-20 bg-dark-900 border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-14">
+                <p class="text-brand-500 font-bold uppercase tracking-widest text-sm mb-2">O que você recebe</p>
+                <h2 class="font-heading text-4xl font-extrabold">Tudo isso por <span class="text-brand-500">R$ 10</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Item -->
+                <div class="flex gap-4 items-start bg-dark-800 p-6 rounded-xl border border-gray-800 hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 shrink-0 bg-brand-500/20 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-check text-brand-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Catálogo completo liberado</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Mais de 5.000 doramas e minisséries, incluindo os títulos mais exclusivos que as plataformas comuns cortam.</p>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="flex gap-4 items-start bg-dark-800 p-6 rounded-xl border border-gray-800 hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 shrink-0 bg-brand-500/20 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-check text-brand-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Acesso em 2 minutos</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Assim que o pagamento cai, o link chega no seu e-mail automaticamente. Sem espera, sem aprovação.</p>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="flex gap-4 items-start bg-dark-800 p-6 rounded-xl border border-gray-800 hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 shrink-0 bg-brand-500/20 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-check text-brand-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Celular, PC, tablet e Smart TV</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Um acesso só funciona em todos. Abre direto no navegador ou via app, sem dor de cabeça.</p>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="flex gap-4 items-start bg-dark-800 p-6 rounded-xl border border-gray-800 hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 shrink-0 bg-brand-500/20 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-check text-brand-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Pagou uma vez, é seu</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Nada de mensalidade, nada de renovação automática, nada de susto na fatura do cartão.</p>
+                    </div>
+                </div>
             </div>
             
-            <div class="mt-16 flex justify-center items-center gap-6 text-gray-500 text-sm font-medium">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Episódios 4K</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Legendas Rápidas</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> App Mobile</div>
+            <div class="mt-12 text-center">
+                <button class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all">
+                    Liberar meu acesso agora <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Destaques -->
-    <section id="em-alta" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-900 mb-2">Em Alta Esta Semana</h2>
-            <p class="text-gray-500 mb-10">Os doramas que estão fazendo todo mundo suspirar.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-2xl shadow-md aspect-[2/3] mb-4 bg-gradient-to-br from-purple-400 to-brand-500">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="fa-solid fa-play text-white text-5xl drop-shadow-md"></i>
+    <!-- Planos / Pricing -->
+    <section class="py-20 relative">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <p class="text-brand-500 font-bold uppercase tracking-widest text-sm mb-2">Escolha seu acesso</p>
+                <h2 class="font-heading text-4xl font-extrabold">Entre hoje pelo <br><span class="text-brand-500 text-glow">preço de lançamento</span></h2>
+                
+                <div class="mt-6 inline-flex items-center gap-2 bg-brand-500/20 text-brand-500 border border-brand-500/50 px-4 py-2 rounded-full text-sm font-semibold">
+                    <i class="fa-solid fa-fire animate-pulse"></i> Últimas vagas no preço de lançamento
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 justify-center items-stretch max-w-4xl mx-auto">
+                
+                <!-- Plano Básico -->
+                <div class="flex-1 bg-dark-800 border border-gray-700 rounded-2xl p-8 flex flex-col relative">
+                    <div class="text-center border-b border-gray-700 pb-6 mb-6">
+                        <h3 class="font-heading text-2xl font-bold text-white mb-2">Plano Básico</h3>
+                        <p class="text-gray-400 text-sm mb-4">Pra começar a maratonar hoje.</p>
+                        <p class="line-through text-gray-500 text-sm font-semibold">De R$ 97,00</p>
+                        <div class="text-5xl font-heading font-black text-white mt-1">
+                            <span class="text-2xl font-bold align-top">R$</span>10<span class="text-xl">,00</span>
                         </div>
                     </div>
-                    <h3 class="font-bold text-lg text-gray-900 group-hover:text-brand-600 transition-colors">Rainha das Lágrimas</h3>
-                    <p class="text-sm text-gray-500">Romance, Comédia • 16 ep</p>
+                    
+                    <p class="font-bold text-sm mb-4">📋 O que está incluso:</p>
+                    <ul class="space-y-3 text-sm text-gray-300 font-medium mb-8 flex-1">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1"></i> Acesso ao catálogo essencial</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1"></i> Assista quando quiser, sem mensalidade</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1"></i> Compatível com celular</li>
+                        <li class="flex items-start gap-2 text-gray-600 line-through"><i class="fa-solid fa-xmark mt-1"></i> Catálogo completo 100% liberado</li>
+                        <li class="flex items-start gap-2 text-gray-600 line-through"><i class="fa-solid fa-xmark mt-1"></i> Qualidade HD e 4K</li>
+                        <li class="flex items-start gap-2 text-gray-600 line-through"><i class="fa-solid fa-xmark mt-1"></i> Suporte VIP 24h</li>
+                    </ul>
+
+                    <div class="text-center text-xs text-gray-400 font-semibold mb-4 space-x-2">
+                        <span><i class="fa-brands fa-pix text-teal-400"></i> PIX</span>
+                        <span>Pagamento único</span>
+                    </div>
+
+                    <button class="w-full py-4 rounded-lg bg-gray-700 hover:bg-gray-600 text-white font-bold transition-colors">
+                        Quero o plano básico
+                    </button>
                 </div>
-                <!-- Card 2 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-2xl shadow-md aspect-[2/3] mb-4 bg-gradient-to-br from-blue-400 to-indigo-500">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="fa-solid fa-play text-white text-5xl drop-shadow-md"></i>
+
+                <!-- Plano VIP (Destaque) -->
+                <div class="flex-1 bg-gradient-to-b from-brand-900 to-dark-800 border-2 border-brand-500 rounded-2xl p-8 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(220,38,38,0.3)]">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-500 text-white px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest whitespace-nowrap shadow-lg">
+                        ⭐ Mais popular
+                    </div>
+
+                    <div class="text-center border-b border-brand-700 pb-6 mb-6">
+                        <div class="text-brand-400 font-bold text-sm mb-1">🔥 80% OFF</div>
+                        <h3 class="font-heading text-3xl font-bold text-white mb-2">Plano VIP</h3>
+                        <p class="text-gray-300 text-sm mb-4">A experiência completa, sem limites.</p>
+                        <p class="line-through text-gray-500 text-sm font-semibold">De R$ 135,00</p>
+                        <div class="text-5xl font-heading font-black text-white mt-1 text-glow">
+                            <span class="text-2xl font-bold align-top">R$</span>27<span class="text-xl">,00</span>
                         </div>
                     </div>
-                    <h3 class="font-bold text-lg text-gray-900 group-hover:text-brand-600 transition-colors">Pousando no Amor</h3>
-                    <p class="text-sm text-gray-500">Romance, Drama • 16 ep</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-2xl shadow-md aspect-[2/3] mb-4 bg-gradient-to-br from-yellow-400 to-orange-500">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="fa-solid fa-play text-white text-5xl drop-shadow-md"></i>
-                        </div>
+                    
+                    <p class="font-bold text-sm mb-4">📋 Tudo do básico + <span class="text-brand-400">extras:</span></p>
+                    <ul class="space-y-3 text-sm text-gray-200 font-medium mb-8 flex-1">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 mt-1"></i> Acesso Exclusivo (App + Navegador)</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 mt-1"></i> Catálogo completo sem cortes</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 mt-1"></i> Multi-dispositivo (TV, PC, Celular)</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 mt-1"></i> Qualidade HD e 4K</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 mt-1"></i> Legendas em português</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 mt-1"></i> Lançamentos semanais inclusos</li>
+                        <li class="flex items-start gap-2 bg-brand-500/20 p-2 rounded text-brand-300"><i class="fa-solid fa-gift mt-1"></i> Suporte Dedicado VIP (Bônus)</li>
+                    </ul>
+
+                    <div class="text-center text-xs text-gray-300 font-semibold mb-4 space-x-2">
+                        <span><i class="fa-brands fa-pix text-teal-400"></i> PIX</span>
+                        <span>Acesso vitalício</span>
                     </div>
-                    <h3 class="font-bold text-lg text-gray-900 group-hover:text-brand-600 transition-colors">Sorriso Real</h3>
-                    <p class="text-sm text-gray-500">Comédia Romântica • 16 ep</p>
+
+                    <button class="w-full py-4 rounded-lg bg-green-500 hover:bg-green-600 text-white font-bold transition-transform transform hover:scale-105 shadow-[0_0_15px_rgba(34,197,94,0.4)] text-lg flex items-center justify-center gap-2">
+                        Quero o plano VIP <i class="fa-solid fa-arrow-right"></i>
+                    </button>
                 </div>
-                <!-- Card 4 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-2xl shadow-md aspect-[2/3] mb-4 bg-gradient-to-br from-green-400 to-teal-500">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="fa-solid fa-play text-white text-5xl drop-shadow-md"></i>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia -->
+    <section class="py-16 bg-brand-900 border-y border-brand-700">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+            <div class="w-40 h-40 shrink-0 bg-brand-500 rounded-full flex items-center justify-center border-4 border-brand-300 shadow-2xl relative">
+                <div class="absolute inset-2 border-2 border-dashed border-white/50 rounded-full"></div>
+                <div class="text-center text-white">
+                    <span class="block text-5xl font-heading font-black leading-none">30</span>
+                    <span class="block text-lg font-bold tracking-widest mt-1">DIAS</span>
+                </div>
+            </div>
+            <div>
+                <p class="text-brand-300 font-bold uppercase tracking-widest text-sm mb-1">Risco zero</p>
+                <h2 class="font-heading text-3xl font-extrabold text-white mb-4">O risco é todo meu</h2>
+                <p class="text-gray-200 text-lg mb-6 leading-relaxed">
+                    Entre, veja o catálogo inteiro, assista o quanto quiser. Se em até 30 dias você achar que não valeu, é só mandar uma mensagem que eu devolvo <strong>100% do seu dinheiro</strong>. Sem pergunta, sem burocracia.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-100 font-medium">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-brand-300"></i> Você testa tudo antes de decidir</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-brand-300"></i> Reembolso integral automático</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <p class="text-brand-500 font-bold uppercase tracking-widest text-sm mb-2">Dúvidas Frequentes</p>
+                <h2 class="font-heading text-4xl font-extrabold">Perguntas <span class="text-brand-500">Respondidas</span></h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-dark-800 rounded-lg border border-gray-700 overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold p-5 bg-dark-800 hover:bg-dark-900 transition-colors">
+                        Como eu recebo meu acesso?
+                        <i class="fa-solid fa-plus text-brand-500 group-open:rotate-45 transition-transform"></i>
+                    </summary>
+                    <div class="p-5 border-t border-gray-700 text-gray-300 text-sm leading-relaxed bg-dark-900">
+                        Assim que o pagamento é confirmado (PIX é na hora), o acesso é liberado automaticamente e o link chega no e-mail que você informar na compra.
                     </div>
-                    <h3 class="font-bold text-lg text-gray-900 group-hover:text-brand-600 transition-colors">A Lição</h3>
-                    <p class="text-sm text-gray-500">Suspense, Vingança • 16 ep</p>
-                </div>
+                </details>
+
+                <details class="group bg-dark-800 rounded-lg border border-gray-700 overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold p-5 bg-dark-800 hover:bg-dark-900 transition-colors">
+                        Preciso pagar mensalidade?
+                        <i class="fa-solid fa-plus text-brand-500 group-open:rotate-45 transition-transform"></i>
+                    </summary>
+                    <div class="p-5 border-t border-gray-700 text-gray-300 text-sm leading-relaxed bg-dark-900">
+                        Não. O pagamento é único e você não terá cobranças recorrentes. O que você paga hoje garante seu acesso conforme o plano escolhido, sem surpresas na fatura.
+                    </div>
+                </details>
+
+                <details class="group bg-dark-800 rounded-lg border border-gray-700 overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold p-5 bg-dark-800 hover:bg-dark-900 transition-colors">
+                        Funciona no meu celular e TV?
+                        <i class="fa-solid fa-plus text-brand-500 group-open:rotate-45 transition-transform"></i>
+                    </summary>
+                    <div class="p-5 border-t border-gray-700 text-gray-300 text-sm leading-relaxed bg-dark-900">
+                        Sim! A plataforma é 100% responsiva e funciona perfeitamente em iPhones, celulares Android, computadores, tablets e Smart TVs (via navegador).
+                    </div>
+                </details>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-heart text-brand-500 text-2xl"></i>
-                <span class="font-bold text-2xl tracking-tight text-white">HotDorama</span>
+    <footer class="bg-dark-900 py-10 border-t border-gray-800 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-heading font-black text-3xl text-brand-500 mb-6 tracking-tight">HotDorama</h2>
+            <p class="text-gray-500 text-xs leading-relaxed max-w-2xl mx-auto mb-6">
+                Este site não é afiliado ao Facebook, Instagram, Google ou a qualquer plataforma de streaming oficial. A experiência pode variar de acordo com o dispositivo e a conexão. Todos os direitos reservados © 2026.
+            </p>
+            <div class="flex justify-center gap-6 text-sm font-medium text-gray-400 mb-6">
+                <a href="#" class="hover:text-white transition-colors">Termos</a>
+                <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-white transition-colors">Reembolso</a>
             </div>
-            <p class="text-gray-400 text-sm">© 2026 HotDorama. Feito com amor para dorameiras e dorameiros.</p>
-            <div class="flex space-x-4">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-tiktok text-xl"></i></a>
-            </div>
+            <p class="text-gray-600 text-sm">suporte@hotdorama.com.br</p>
         </div>
     </footer>
 
